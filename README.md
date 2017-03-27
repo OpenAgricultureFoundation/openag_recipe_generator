@@ -34,7 +34,7 @@ air_flush_on_number_per_night = 0 # times / night
 air_flush_on_night_length = 20 # minutes
 ################################################################################
 ```
-From the same directory that contains *recipe_generator.py*, run
+After you are finished your edits, **SAVE THE FILE**. Once saved, from the same directory that contains *recipe_generator.py*, run
 ```
 cd ~/my_projects_folder/openag_recipe_generator
 python recipe_generator.py
