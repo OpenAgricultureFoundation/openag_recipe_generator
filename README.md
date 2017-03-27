@@ -11,7 +11,7 @@ Make sure you have python installed
 ```
 python --version
 ```
-Should see something like
+Should see something like, if you do not. Go [download python](https://www.python.org/downloads/)
 ```
 Python 2.7.10
 ```
