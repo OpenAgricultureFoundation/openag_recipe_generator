@@ -1,4 +1,5 @@
 import json
+import operator
 
 ### Set parameters #############################################################
 recipe_name = 'example_recipe'
@@ -15,6 +16,11 @@ air_flush_on_number_per_day = 2 # times / day
 air_flush_on_day_length = 60 # minutes
 air_flush_on_number_per_night = 0 # times / night
 air_flush_on_night_length = 20 # minutes
+ph = 6 # pH
+nutrient_a_number_per_day = 2 # times / day
+nutrient_a_volume = 2.5 # mL
+nutrient_b_number_per_day = 1 # times / day
+nutrient_b_volume = 5 # mL
 ################################################################################
 
 
@@ -23,6 +29,7 @@ recipe = {}
 recipe['_id'] = recipe_name
 recipe['format'] = recipe_format
 recipe['operations'] = []
+recipe['operations'].append([0, 'water_potential_hydrogen', ph])
 for i in range(cycles):
     # Set day & night start times
     day_start_time = (day_length + night_length) * 3600 * i
@@ -32,10 +39,21 @@ for i in range(cycles):
     recipe['operations'].append([day_start_time, 'light_intensity_blue', light_intensity_blue])
     recipe['operations'].append([day_start_time, 'light_intensity_white', light_intensity_white])
     recipe['operations'].append([day_start_time, 'air_temperature', day_air_temperature])
+    # Set air flush
     for i in range(air_flush_on_number_per_day):
         time = day_start_time + day_length * 3600 / air_flush_on_number_per_day * i
-        recipe['operations'].append([time, 'air_flush_on', 0]) # Air flush only sets new value if different than prev
+        recipe['operations'].append([time, 'air_flush_on', 0]) # Air flush firmware only turns on for new value duation if new value is different than prev
         recipe['operations'].append([time + 10, 'air_flush_on', air_flush_on_day_length]) # Send real value after setting flush to 0 for 10 sec
+    # Set nutrient a
+    for i in range(nutrient_a_number_per_day):
+        time = day_start_time + day_length * 3600 / nutrient_a_number_per_day * i
+        recipe['operations'].append([time, 'nutrient_flora_duo_a', 0]) # Pump firmware only doses volume if new value is different than prev
+        recipe['operations'].append([time + 10, 'nutrient_flora_duo_a', nutrient_a_volume]) # Send real value after setting volume to 0 for 10 sec
+    # Set nutrient b
+    for i in range(nutrient_b_number_per_day):
+        time = day_start_time + day_length * 3600 / nutrient_b_number_per_day * i
+        recipe['operations'].append([time, 'nutrient_flora_duo_b', 0]) # Pump firmware only doses volume if new value is different than prev
+        recipe['operations'].append([time + 10, 'nutrient_flora_duo_b', nutrient_b_volume]) # Send real value after setting volume to 0 for 10 sec
 
     # Set night parameters
     recipe['operations'].append([night_start_time, 'light_intensity_red', 0])
@@ -46,6 +64,9 @@ for i in range(cycles):
         time = night_start_time + night_length * 3600 / air_flush_on_number_per_night * i
         recipe['operations'].append([time, 'air_flush_on', 0]) # Air flush only sets new value if different than prev
         recipe['operations'].append([time + 10, 'air_flush_on', air_flush_on_night_length]) # Send real value after setting flush to 0 for 10 sec
+
+# Sort recipe so timeseries is linear
+recipe['operations'] = sorted(recipe['operations'], key=operator.itemgetter(0))
 
 # Write recipe to file
 f = open('{}.json'.format(recipe_name), 'w')
