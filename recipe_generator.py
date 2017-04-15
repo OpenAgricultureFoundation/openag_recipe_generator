@@ -2,24 +2,38 @@ import json
 import operator
 
 ### Set parameters #############################################################
-recipe_name = 'example_recipe'
+recipe_name = 'light_blue_red_72hours'
 recipe_format = 'simple'
-cycles = 2 # cycles
-day_length = 18 # hours
+cycles = 14400 # cycles
+
+
+day_length = 0.005 # hours
 light_intensity_red = 1 # 1 for on, 0 for off
+light_intensity_blue = 0 # 1 for on, 0 for off
+light_intensity_white = 0  # 1 for on, 0 for off
+night_length = 0.01 # hours
+light_intensity_red = 0 # 1 for on, 0 for off
 light_intensity_blue = 1 # 1 for on, 0 for off
-light_intensity_white = 1 # 1 for on, 0 for off
-night_length = 6 # hours
-day_air_temperature = 24 # C
-night_air_temperature = 16 # C
-air_flush_on_number_per_day = 2 # times / day
-air_flush_on_day_length = 60 # minutes
+light_intensity_white = 0  # 1 for on, 0 for off
+
+# recipe_name = 'example_recipe'
+# recipe_format = 'simple'
+# cycles = 2 # cycles
+# day_length = 18 # hours
+# light_intensity_red = 1 # 1 for on, 0 for off
+# light_intensity_blue = 1 # 1 for on, 0 for off
+# light_intensity_white = 1 # 1 for on, 0 for off
+# night_length = 6 # hours
+day_air_temperature = 23 # C
+night_air_temperature = 23 # C
+air_flush_on_number_per_day = 0 # times / day
+air_flush_on_day_length = 0 # minutes
 air_flush_on_number_per_night = 0 # times / night
-air_flush_on_night_length = 20 # minutes
+air_flush_on_night_length = 0 # minutes
 ph = 6 # pH
-nutrient_a_number_per_day = 2 # times / day
+nutrient_a_number_per_day = 0 # times / day
 nutrient_a_volume = 2.5 # mL
-nutrient_b_number_per_day = 1 # times / day
+nutrient_b_number_per_day = 0 # times / day
 nutrient_b_volume = 5 # mL
 ################################################################################
 
