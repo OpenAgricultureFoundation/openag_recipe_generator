@@ -2,28 +2,14 @@ import json
 import operator
 
 ### Set parameters #############################################################
-recipe_name = 'light_blue_red_72hours'
+recipe_name = 'example_recipe'
 recipe_format = 'simple'
-cycles = 14400 # cycles
-
-
-day_length = 0.005 # hours
+cycles = 2 # cycles
+day_length = 18 # hours
 light_intensity_red = 1 # 1 for on, 0 for off
-light_intensity_blue = 0 # 1 for on, 0 for off
-light_intensity_white = 0  # 1 for on, 0 for off
-night_length = 0.01 # hours
-light_intensity_red = 0 # 1 for on, 0 for off
 light_intensity_blue = 1 # 1 for on, 0 for off
-light_intensity_white = 0  # 1 for on, 0 for off
-
-# recipe_name = 'example_recipe'
-# recipe_format = 'simple'
-# cycles = 2 # cycles
-# day_length = 18 # hours
-# light_intensity_red = 1 # 1 for on, 0 for off
-# light_intensity_blue = 1 # 1 for on, 0 for off
-# light_intensity_white = 1 # 1 for on, 0 for off
-# night_length = 6 # hours
+light_intensity_white = 1 # 1 for on, 0 for off
+night_length = 6 # hours
 day_air_temperature = 23 # C
 night_air_temperature = 23 # C
 air_flush_on_number_per_day = 0 # times / day
