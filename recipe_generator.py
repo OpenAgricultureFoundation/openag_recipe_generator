@@ -2,7 +2,7 @@ import json
 import operator
 
 ### Set parameters #############################################################
-recipe_name = 'nutrient_doser_fail_test_7d'
+recipe_name = 'test'
 recipe_format = 'simple'
 cycles = 84 # cycles
 day_length = 1 # hours
@@ -46,16 +46,19 @@ for i in range(cycles):
         time = day_start_time + day_length * 3600 / air_flush_on_number_per_day * i
         recipe['operations'].append([time, 'air_flush_on', 0]) # Air flush firmware only turns on for new value duation if new value is different than prev
         recipe['operations'].append([time + 10, 'air_flush_on', air_flush_on_day_length]) # Send real value after setting flush to 0 for 10 sec
+        recipe['operations'].append([time + 20, 'air_flush_on', 0]) # Kludge for when arduino resets, don't resend values
     # Set nutrient a
     for i in range(nutrient_a_number_per_day):
         time = day_start_time + day_length * 3600 / nutrient_a_number_per_day * i
         recipe['operations'].append([time, 'nutrient_flora_duo_a', 0]) # Pump firmware only doses volume if new value is different than prev
         recipe['operations'].append([time + 10, 'nutrient_flora_duo_a', nutrient_a_volume]) # Send real value after setting volume to 0 for 10 sec
+        recipe['operations'].append([time + 20, 'nutrient_flora_duo_a', 0]) # Kludge for when arduino resets, don't resend values
     # Set nutrient b
     for i in range(nutrient_b_number_per_day):
         time = day_start_time + day_length * 3600 / nutrient_b_number_per_day * i
         recipe['operations'].append([time, 'nutrient_flora_duo_b', 0]) # Pump firmware only doses volume if new value is different than prev
         recipe['operations'].append([time + 10, 'nutrient_flora_duo_b', nutrient_b_volume]) # Send real value after setting volume to 0 for 10 sec
+        recipe['operations'].append([time + 20, 'nutrient_flora_duo_b', 0]) # Kludge for when arduino resets, don't resend values
 
     # Set night parameters
     recipe['operations'].append([night_start_time, 'light_intensity_red', 0])
@@ -68,6 +71,7 @@ for i in range(cycles):
         time = night_start_time + night_length * 3600 / air_flush_on_number_per_night * i
         recipe['operations'].append([time, 'air_flush_on', 0]) # Air flush only sets new value if different than prev
         recipe['operations'].append([time + 10, 'air_flush_on', air_flush_on_night_length]) # Send real value after setting flush to 0 for 10 sec
+        recipe['operations'].append([time + 20, 'air_flush_on', 0]) # Kludge for when arduino resets, don't resend values
 
 # Sort recipe so timeseries is linear
 recipe['operations'] = sorted(recipe['operations'], key=operator.itemgetter(0))
