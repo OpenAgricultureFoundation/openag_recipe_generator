@@ -25,57 +25,7 @@
         [
             0, 
             "air_temperature", 
-            24
-        ], 
-        [
-            0, 
-            "air_flush_on", 
-            0
-        ], 
-        [
-            0, 
-            "nutrient_flora_duo_a", 
-            0
-        ], 
-        [
-            0, 
-            "nutrient_flora_duo_b", 
-            0
-        ], 
-        [
-            10, 
-            "air_flush_on", 
-            60
-        ], 
-        [
-            10, 
-            "nutrient_flora_duo_a", 
-            2.5
-        ], 
-        [
-            10, 
-            "nutrient_flora_duo_b", 
-            5
-        ], 
-        [
-            32400, 
-            "air_flush_on", 
-            0
-        ], 
-        [
-            32400, 
-            "nutrient_flora_duo_a", 
-            0
-        ], 
-        [
-            32410, 
-            "air_flush_on", 
-            60
-        ], 
-        [
-            32410, 
-            "nutrient_flora_duo_a", 
-            2.5
+            23
         ], 
         [
             64800, 
@@ -95,7 +45,7 @@
         [
             64800, 
             "air_temperature", 
-            16
+            23
         ], 
         [
             86400, 
@@ -115,57 +65,7 @@
         [
             86400, 
             "air_temperature", 
-            24
-        ], 
-        [
-            86400, 
-            "air_flush_on", 
-            0
-        ], 
-        [
-            86400, 
-            "nutrient_flora_duo_a", 
-            0
-        ], 
-        [
-            86400, 
-            "nutrient_flora_duo_b", 
-            0
-        ], 
-        [
-            86410, 
-            "air_flush_on", 
-            60
-        ], 
-        [
-            86410, 
-            "nutrient_flora_duo_a", 
-            2.5
-        ], 
-        [
-            86410, 
-            "nutrient_flora_duo_b", 
-            5
-        ], 
-        [
-            118800, 
-            "air_flush_on", 
-            0
-        ], 
-        [
-            118800, 
-            "nutrient_flora_duo_a", 
-            0
-        ], 
-        [
-            118810, 
-            "air_flush_on", 
-            60
-        ], 
-        [
-            118810, 
-            "nutrient_flora_duo_a", 
-            2.5
+            23
         ], 
         [
             151200, 
@@ -185,7 +85,7 @@
         [
             151200, 
             "air_temperature", 
-            16
+            23
         ]
     ]
 }
