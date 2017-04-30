@@ -99,7 +99,8 @@ def load_list_of_servers(file_name):
     server_list = []
     with open(file_name, 'r') as f:
         for line in f:
-            server_list.append(line)
+            if not line.startswith("#") and line.startswith("http://"):
+                server_list.append(line)
     return server_list
 
 
