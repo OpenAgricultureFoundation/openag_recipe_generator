@@ -104,7 +104,8 @@ def load_list_of_servers(file_name):
     return server_list
 
 
-def start_recipe_on_mutiple_pfcs(server_list=None, server_url=None, **kwargs):
+def start_recipe_on_mutiple_pfcs(server_list=None, server_url=None, upload_recipe=None, 
+                                 **kwargs):
     """
     Start a recipe running on a group of PFCS
     """
@@ -113,7 +114,7 @@ def start_recipe_on_mutiple_pfcs(server_list=None, server_url=None, **kwargs):
             server_url = server_url.replace("\n", "")
             server_url = server_url.replace("\r", "")
             print("Running recipe on {}".format(server_url))
-            upload_and_start_recipe(server_url=server_url, **kwargs)
+            upload_and_start_recipe(server_url=server_url, upload_recipe=upload_recipe, **kwargs)
             print("----------------\n\n")
 
 def main():
