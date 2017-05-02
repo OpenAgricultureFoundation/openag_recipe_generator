@@ -42,7 +42,8 @@ def load_recipe(file_name):
     return data
 
 
-def save_to_server(server_url, db_name, document):
+def save_to_server(server_url, db_name, document_orig):
+    document = document_orig.copy()
     server = couchdb.Server(server_url)
     db = server[db_name]
     db[document['_id']] = document
@@ -83,7 +84,7 @@ def upload_and_start_recipe(server_url=None,
         try:
             save_to_server(server_url, db_name, recipe_dict)
         except couchdb.http.ResourceConflict:
-            print("Warning: Recipe failed to upload. Already on the server. \
+            print("Warning: Recipe failed to upload. \
             Recipe Name: {} PFC: {}".format(recipe_dict['_id'], server_url))
 
     if start_recipe:
@@ -114,6 +115,7 @@ def start_recipe_on_mutiple_pfcs(server_list=None, server_url=None, upload_recip
             server_url = server_url.replace("\n", "")
             server_url = server_url.replace("\r", "")
             print("Running recipe on {}".format(server_url))
+            print("upload recipe: " + str(upload_recipe))
             upload_and_start_recipe(server_url=server_url, upload_recipe=upload_recipe, **kwargs)
             print("----------------\n\n")
 
