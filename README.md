@@ -1,4 +1,4 @@
-# openag_recipe_generator  cool
+# openag_recipe_generator
 Python script for generating simple timeseries recipes
 
 ## Install
