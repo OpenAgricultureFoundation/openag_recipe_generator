@@ -1,4 +1,6 @@
-# openag_recipe_generator
+# DEPRECATED.
+
+## openag_recipe_generator
 Python script for generating simple timeseries recipes
 
 ## Install
